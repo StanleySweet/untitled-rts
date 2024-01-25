@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://dtm2di7ayujee"]
+
+[ext_resource type="PackedScene" uid="uid://yqqpjklq4etl" path="res://templates/units/Footprint.tscn" id="1_xepma"]
+[ext_resource type="PackedScene" uid="uid://b7lqi0fbp738j" path="res://templates/units/Identity.tscn" id="1_ylhn4"]
+
+[node name="InfantrySpearmanA" type="Node3D"]
+
+[node name="Footprint" parent="." instance=ExtResource("1_xepma")]
+
+[node name="Identity" parent="." instance=ExtResource("1_ylhn4")]
+civ = "Civ Key"
+generic_name = "Generic Name"
+specific_name = "Specific Name"
+rank = 0
+history = ""
+phenotypes = PackedStringArray()
+selection_group_name = ""
+tooltip = ""
+lang = ""
+classes = PackedStringArray()
+visible_classes = PackedStringArray()
+is_undeletable = false
+is_controllable = false
+entity = 0

@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://dupp1ojxlecob"]
+
+[ext_resource type="PackedScene" uid="uid://dtm2di7ayujee" path="res://templates/units/infantry_spearman_a.tscn" id="1_gqc11"]
+[ext_resource type="Script" path="res://scripts/Interactor.gd" id="2_ephyl"]
+
+[node name="TestMap" type="Node3D"]
+
+[node name="InfantrySpearmanA" parent="." instance=ExtResource("1_gqc11")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.22308)
+
+[node name="RayCast3D" type="RayCast3D" parent="Camera3D"]
+target_position = Vector3(0, 0, -2)
+script = ExtResource("2_ephyl")
+
+[node name="Prompt" type="Label" parent="Camera3D/RayCast3D"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Message
+[Key]"
