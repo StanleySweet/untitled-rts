@@ -7,11 +7,11 @@ signal interacted(body)
 @export var prompt_action : String = "interact"
 @export var enabled : bool = true
 
-func get_identity() -> Identity:
+func get_identity() -> ICmpIdentity:
 	if not self.enabled:
 		return null
 
-	return get_node("../../Identity")
+	return get_node("../../CmpIdentity")
 
 func interact(body):
 	if self.enabled:

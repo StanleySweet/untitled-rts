@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://hyhs3dvoo1da"]
+
+[ext_resource type="Script" path="res://simulation/CmpTemplate.gd" id="1_0wgme"]
+[ext_resource type="Script" path="res://simulation/components/CmpModifiersManager.gd" id="2_x8xf5"]
+[ext_resource type="Script" path="res://simulation/components/CmpWallPiece.gd" id="3_krb4g"]
+
+[node name="System" type="Node"]
+script = ExtResource("1_0wgme")
+
+[node name="CmpModifiersManager" type="Node" parent="."]
+script = ExtResource("2_x8xf5")
+
+[node name="CmpWallPiece" type="Node" parent="."]
+script = ExtResource("3_krb4g")

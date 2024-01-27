@@ -2,6 +2,6 @@
 # SPDX-FileCopyrightText: © 2024 Wildfire Games
 # SPDX-FileCopyrightText: © 2024 Stanislas Daniel Claude Dolcini
 
-extends Node
-class_name IPosition
-static var IID_Position = PyrogenesisEngine.register_interface("Position")
+extends IComponent
+class_name ICmpWonder
+static var IID_Wonder = PyrogenesisEngine.register_interface(ICmpWonder)

@@ -25,7 +25,7 @@ func _process(_delta : float) -> void:
 		var detected = get_collider()
 		if detected is Interactable:
 			if self.last_interactable != detected:
-				var identity : Identity = detected.get_identity()
+				var identity : ICmpIdentity = detected.get_identity()
 				specific_name.text =identity.specific_name
 				generic_name.text = identity.generic_name
 				icon.texture = identity.icon

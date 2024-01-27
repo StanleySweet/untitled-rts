@@ -2,6 +2,6 @@
 # SPDX-FileCopyrightText: © 2024 Wildfire Games
 # SPDX-FileCopyrightText: © 2024 Stanislas Daniel Claude Dolcini
 
-extends Node
-class_name IUnitAI
-static var IID_UnitAI = PyrogenesisEngine.register_interface("UnitAI")
+extends IComponent
+class_name ICmpWallPiece
+static var IID_WallPiece = PyrogenesisEngine.register_interface(ICmpWallPiece)

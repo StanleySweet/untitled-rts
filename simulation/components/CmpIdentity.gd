@@ -2,8 +2,8 @@
 # SPDX-FileCopyrightText: © 2024 Wildfire Games
 # SPDX-FileCopyrightText: © 2024 Stanislas Daniel Claude Dolcini
 
-extends IIdentity
-class_name Identity
+extends ICmpIdentity
+class_name CmpIdentity
 
 enum Rank {
 	None,
@@ -36,9 +36,9 @@ func _ready() -> void:
 		self.phenotype = self.phenotypes[randi_range(0,self.phenotypes.size()-1)]
 	else:
 		self.phenotype = "default"
-	
+
 	self.rank_string = str(self.rank)
-	self.lang = self.lang if self.lang != "" else "greek" 
+	self.lang = self.lang if self.lang != "" else "greek"
 
 func get_rank() -> String:
 	return self.rank_string
@@ -49,7 +49,7 @@ func get_rank_tech_name() -> String:
 func has_class(identity_class : String) -> bool:
 	return self.classes.has(identity_class)
 
-func get_mirage() -> IdentityMirage:
-	var mirage : IdentityMirage = IdentityMirage.new()
+func get_mirage() -> CmpdentityMirage:
+	var mirage : CmpdentityMirage = CmpdentityMirage.new()
 	mirage.classes = self.classes.duplicate()
 	return mirage

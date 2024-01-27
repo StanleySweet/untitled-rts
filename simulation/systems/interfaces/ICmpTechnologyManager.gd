@@ -2,7 +2,6 @@
 # SPDX-FileCopyrightText: © 2024 Wildfire Games
 # SPDX-FileCopyrightText: © 2024 Stanislas Daniel Claude Dolcini
 
-class_name PositionHelper
-
-static func get_spawn_position(entity:int, target: int, forced: bool) -> Vector2:
-	return Vector2(0.0, 0.0)
+extends Node
+class_name ICmpTechnologyManager
+static var IID_TechnologyManager = PyrogenesisEngine.register_interface(ICmpTechnologyManager)

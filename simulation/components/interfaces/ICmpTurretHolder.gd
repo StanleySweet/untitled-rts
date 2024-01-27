@@ -2,6 +2,6 @@
 # SPDX-FileCopyrightText: © 2024 Wildfire Games
 # SPDX-FileCopyrightText: © 2024 Stanislas Daniel Claude Dolcini
 
-extends Node
-class_name IObstruction
-static var IID_Obstruction = PyrogenesisEngine.register_interface("Obstruction")
+extends IComponent
+class_name ICmpTurretHolder
+static var IID_TurretHolder = PyrogenesisEngine.register_interface(ICmpTurretHolder)

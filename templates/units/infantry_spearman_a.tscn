@@ -1,26 +1,29 @@
-[gd_scene load_steps=4 format=3 uid="uid://dtm2di7ayujee"]
+[gd_scene load_steps=8 format=3 uid="uid://b2yiti2kvfchq"]
 
-[ext_resource type="PackedScene" uid="uid://yqqpjklq4etl" path="res://templates/units/Footprint.tscn" id="1_xepma"]
-[ext_resource type="PackedScene" uid="uid://b7lqi0fbp738j" path="res://templates/units/Identity.tscn" id="1_ylhn4"]
-[ext_resource type="Texture2D" uid="uid://dx3q3rjx725a4" path="res://art/textures/ui/session/portraits/units/infantry_spearman.png" id="3_rndsx"]
+[ext_resource type="Script" path="res://simulation/components/CmpFootprint.gd" id="1_jfpwj"]
+[ext_resource type="Script" path="res://simulation/components/CmpHealth.gd" id="3_nmob2"]
+[ext_resource type="Script" path="res://simulation/components/models/DamageVariant.gd" id="3_rf71u"]
+[ext_resource type="Script" path="res://simulation/components/CmpIdentity.gd" id="4_qx4ua"]
+[ext_resource type="Script" path="res://simulation/components/CmpWallset.gd" id="5_prnpu"]
+[ext_resource type="Texture2D" uid="uid://dx3q3rjx725a4" path="res://art/textures/ui/session/portraits/units/infantry_spearman.png" id="5_tk2gx"]
+
+[sub_resource type="Resource" id="Resource_cibey"]
+script = ExtResource("3_rf71u")
+variant_name = ""
+ratio = 0.0
 
 [node name="InfantrySpearmanA" type="Node3D"]
 
-[node name="Footprint" parent="." instance=ExtResource("1_xepma")]
+[node name="CmpFootprint" type="Node" parent="."]
+script = ExtResource("1_jfpwj")
 
-[node name="Identity" parent="." instance=ExtResource("1_ylhn4")]
-civ = "Civ Key"
-generic_name = "Generic Name"
-specific_name = "Specific Name"
-icon = ExtResource("3_rndsx")
-rank = 0
-history = ""
-phenotypes = PackedStringArray()
-selection_group_name = ""
-tooltip = ""
-lang = ""
-classes = PackedStringArray()
-visible_classes = PackedStringArray()
-is_undeletable = false
-is_controllable = false
-entity = 0
+[node name="CmpHealth" type="Node" parent="."]
+script = ExtResource("3_nmob2")
+DamageVariants = Array[ExtResource("3_rf71u")]([SubResource("Resource_cibey")])
+
+[node name="CmpIdentity" type="Node" parent="."]
+script = ExtResource("4_qx4ua")
+icon = ExtResource("5_tk2gx")
+
+[node name="CmpWallSet" type="Node" parent="."]
+script = ExtResource("5_prnpu")

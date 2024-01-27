@@ -2,6 +2,6 @@
 # SPDX-FileCopyrightText: © 2024 Wildfire Games
 # SPDX-FileCopyrightText: © 2024 Stanislas Daniel Claude Dolcini
 
-extends Node
-class_name IRallyPoint
-static var IID_RallyPoint = PyrogenesisEngine.register_interface("RallyPoint")
+extends IComponent
+class_name ICmpFogging
+static var IID_Fogging = PyrogenesisEngine.register_interface(ICmpFogging)

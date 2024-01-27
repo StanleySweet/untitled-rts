@@ -2,8 +2,8 @@
 # SPDX-FileCopyrightText: © 2024 Wildfire Games
 # SPDX-FileCopyrightText: © 2024 Stanislas Daniel Claude Dolcini
 
-extends Identity
-class_name IdentityMirage
+extends CmpIdentity
+class_name CmpdentityMirage
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

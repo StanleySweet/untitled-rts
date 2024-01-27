@@ -3,5 +3,5 @@
 # SPDX-FileCopyrightText: © 2024 Stanislas Daniel Claude Dolcini
 
 extends IComponent
-class_name IIdentity
-static var IID_Identity = PyrogenesisEngine.register_interface("Identity")
+class_name ICmpRangeManager
+static var IID_RangeManager = PyrogenesisEngine.register_interface(ICmpRangeManager)

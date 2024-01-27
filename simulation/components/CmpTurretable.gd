@@ -2,14 +2,15 @@
 # SPDX-FileCopyrightText: © 2024 Wildfire Games
 # SPDX-FileCopyrightText: © 2024 Stanislas Daniel Claude Dolcini
 
-extends ITurretable
+extends ICmpTurretable
+class_name CmpTurretable
 
-var IID_TurretHolder = ITurretHolder.IID_TurretHolder
-var IID_Obstruction = IObstruction.IID_Obstruction
-var IID_UnitMotion = IUnitMotion.IID_UnitMotion
-var IID_UnitAI = IUnitAI.IID_UnitAI
-var IID_Position = IPosition.IID_Position
-var IID_RallyPoint = IRallyPoint.IID_RallyPoint
+var IID_TurretHolder = ICmpTurretHolder.IID_TurretHolder
+var IID_Obstruction = ICmpObstruction.IID_Obstruction
+var IID_UnitMotion = ICmpUnitMotion.IID_UnitMotion
+var IID_UnitAI = ICmpUnitAI.IID_UnitAI
+var IID_Position = ICmpPosition.IID_Position
+var IID_RallyPoint = ICmpRallyPoint.IID_RallyPoint
 
 @export var holder: int
 @export var is_ejectable: bool

@@ -2,7 +2,7 @@
 # SPDX-FileCopyrightText: © 2024 Wildfire Games
 # SPDX-FileCopyrightText: © 2024 Stanislas Daniel Claude Dolcini
 
-extends Node
-class_name ITurretable
-static var IID_Turretable = PyrogenesisEngine.register_interface("Turretable")
+extends IComponent
+class_name ICmpTurretable
+static var IID_Turretable = PyrogenesisEngine.register_interface(ICmpTurretable)
 static var MT_TurretedStateChanged = PyrogenesisEngine.register_interface("TurretedStateChanged")
