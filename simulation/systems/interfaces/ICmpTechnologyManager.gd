@@ -2,6 +2,6 @@
 # SPDX-FileCopyrightText: © 2024 Wildfire Games
 # SPDX-FileCopyrightText: © 2024 Stanislas Daniel Claude Dolcini
 
-extends Node
+extends IComponent
 class_name ICmpTechnologyManager
 static var IID_TechnologyManager = PyrogenesisEngine.register_interface(ICmpTechnologyManager)

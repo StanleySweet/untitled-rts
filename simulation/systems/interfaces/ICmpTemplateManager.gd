@@ -3,5 +3,5 @@
 # SPDX-FileCopyrightText: © 2024 Stanislas Daniel Claude Dolcini
 
 extends IComponent
-class_name ICmpPlayerManager
-static var IID_PlayerManager = PyrogenesisEngine.register_interface(ICmpPlayerManager)
+class_name ICmpTemplateManager
+static var IID_TemplateManager = PyrogenesisEngine.register_interface(ICmpTemplateManager)

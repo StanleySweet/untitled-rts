@@ -23,8 +23,8 @@ func add_spy(player : int, timeLength : int) -> int:
 	if !cmpTechnologyManager || !cmpTechnologyManager.CanProduce("special/spy"):
 		return PyrogenesisEngine.INVALID_ENTITY
 
-	var template = PyrogenesisEngine.QueryInterface(SYSTEM_ENTITY, ICmpTemplateManager.IID_TemplateManager).GetTemplate("special/spy");
-	if (!IncurBribeCost(template, player, cmpOwnership.GetOwner(), false))
+	var template = PyrogenesisEngine.QueryInterface(PyrogenesisEngine.SYSTEM_ENTITY, ICmpTemplateManager.IID_TemplateManager).GetTemplate("special/spy");
+	if (!CommandsHelper.incur_bribe_cost(template, player, cmpOwnership.GetOwner(), false)):
 		return 0;
 
 	return self.spyId
