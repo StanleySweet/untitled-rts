@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b2yiti2kvfchq"]
+[gd_scene load_steps=11 format=3 uid="uid://b2yiti2kvfchq"]
 
 [ext_resource type="Script" path="res://simulation/components/CmpFootprint.gd" id="1_jfpwj"]
 [ext_resource type="Script" path="res://simulation/components/CmpHealth.gd" id="3_nmob2"]
@@ -6,11 +6,20 @@
 [ext_resource type="Script" path="res://simulation/components/CmpIdentity.gd" id="4_qx4ua"]
 [ext_resource type="Script" path="res://simulation/components/CmpWallset.gd" id="5_prnpu"]
 [ext_resource type="Texture2D" uid="uid://dx3q3rjx725a4" path="res://art/textures/ui/session/portraits/units/infantry_spearman.png" id="5_tk2gx"]
+[ext_resource type="Script" path="res://simulation/components/CmpUpkeep.gd" id="7_f3dgg"]
+[ext_resource type="Script" path="res://simulation/components/models/PyrogenesisResources.gd" id="8_orare"]
 
 [sub_resource type="Resource" id="Resource_cibey"]
 script = ExtResource("3_rf71u")
 variant_name = ""
 ratio = 0.0
+
+[sub_resource type="Resource" id="Resource_xcmk6"]
+script = ExtResource("8_orare")
+food = null
+metal = null
+stone = null
+wood = null
 
 [node name="InfantrySpearmanA" type="Node3D"]
 
@@ -19,6 +28,7 @@ script = ExtResource("1_jfpwj")
 
 [node name="CmpHealth" type="Node" parent="."]
 script = ExtResource("3_nmob2")
+Max = 100.0
 DamageVariants = Array[ExtResource("3_rf71u")]([SubResource("Resource_cibey")])
 
 [node name="CmpIdentity" type="Node" parent="."]
@@ -27,3 +37,7 @@ icon = ExtResource("5_tk2gx")
 
 [node name="CmpWallSet" type="Node" parent="."]
 script = ExtResource("5_prnpu")
+
+[node name="CmpUpkeep" type="Node" parent="."]
+script = ExtResource("7_f3dgg")
+Rates = SubResource("Resource_xcmk6")

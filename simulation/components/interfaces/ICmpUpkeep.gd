@@ -3,5 +3,5 @@
 # SPDX-FileCopyrightText: © 2024 Stanislas Daniel Claude Dolcini
 
 extends IComponent
-class_name ICmpWonder
-static var IID_Wonder = PyrogenesisEngine.register_interface(ICmpWonder)
+class_name ICmpUpkeep
+static var IID_Upkeep = PyrogenesisEngine.register_interface(ICmpUpkeep)

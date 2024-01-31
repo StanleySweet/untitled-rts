@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://o566ijeehtmu"]
+
+[ext_resource type="PackedScene" uid="uid://d0r1g3nhe8oe0" path="res://import/acropolis_bay_2p.pmp" id="1_liuc4"]
+
+[node name="Terrain_Container" instance=ExtResource("1_liuc4")]

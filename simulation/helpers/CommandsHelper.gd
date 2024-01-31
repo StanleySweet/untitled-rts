@@ -2,7 +2,7 @@ class_name CommandsHelper
 
 ## Incur the player with the cost of a bribe, optionally multiply the cost with
 ## the additionalMultiplier
-func incur_bribe_cost(template, player: int, playerBribed: int, failedBribe : bool):
+static func incur_bribe_cost(template, player: int, playerBribed: int, failedBribe : bool):
 	var cmpPlayerBribed = PlayerHelper.QueryPlayerIDInterface(playerBribed);
 	if !cmpPlayerBribed:
 		return false;

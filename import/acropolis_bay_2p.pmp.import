@@ -1,0 +1,15 @@
+[remap]
+
+importer="pmp"
+type="PackedScene"
+uid="uid://d0r1g3nhe8oe0"
+path="res://.godot/imported/acropolis_bay_2p.pmp-dc29c00ae0947ab667182373fcfda6a6.scn"
+
+[deps]
+
+source_file="res://import/acropolis_bay_2p.pmp"
+dest_files=["res://.godot/imported/acropolis_bay_2p.pmp-dc29c00ae0947ab667182373fcfda6a6.scn"]
+
+[params]
+
+quad_size=320
