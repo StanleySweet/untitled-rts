@@ -15,6 +15,10 @@ run/main_scene="res://test_map.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/actor_importer/plugin.cfg", "res://addons/pmp_importer/plugin.cfg")
+
 [input]
 
 interact={

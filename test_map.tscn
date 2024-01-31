@@ -1,13 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://dupp1ojxlecob"]
+[gd_scene load_steps=5 format=3 uid="uid://dupp1ojxlecob"]
 
 [ext_resource type="PackedScene" uid="uid://b2yiti2kvfchq" path="res://templates/units/infantry_spearman_a.tscn" id="1_gqc11"]
 [ext_resource type="Script" path="res://scripts/Interactor.gd" id="2_ephyl"]
 [ext_resource type="FontFile" uid="uid://bme3562538vu7" path="res://fonts/Linux-Biolinum/LinBiolinum_R.ttf" id="3_ovuxi"]
+[ext_resource type="PackedScene" uid="uid://o566ijeehtmu" path="res://maps/skirmishes/acropolis_bay_2p.tscn" id="4_batb2"]
 
 [node name="TestMap" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.22308)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.70096, 1.22308)
 
 [node name="RayCast3D" type="RayCast3D" parent="Camera3D"]
 target_position = Vector3(0, 0, -2)
@@ -34,3 +35,6 @@ offset_right = 256.0
 offset_bottom = 256.0
 
 [node name="InfantrySpearmanA" parent="." instance=ExtResource("1_gqc11")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.70096, 0)
+
+[node name="Terrain_Container" parent="." instance=ExtResource("4_batb2")]
