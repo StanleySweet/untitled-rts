@@ -31,9 +31,9 @@ func handle_insufficient_upkeep() -> void:
 	if self.unpayed:
 		return;
 
-	var cmpIdentity = PyrogenesisEngine.QueryInterface(self.entity, ICmpIdentity.IID_Identity);
+	var cmpIdentity : ICmpIdentity = PyrogenesisEngine.query_interface(self.entity, ICmpIdentity.IID);
 	if cmpIdentity:
-		cmpIdentity.SetControllable(false);
+		cmpIdentity.set_controllable(false);
 
 	self.unpayed = true;
 	
@@ -42,7 +42,7 @@ func handle_sufficient_upkeep() -> void:
 	if !self.unpayed:
 		return;
 
-	var cmpIdentity = PyrogenesisEngine.QueryInterface(self.entity, ICmpIdentity.IID_Identity);
+	var cmpIdentity = PyrogenesisEngine.query_interface(self.entity, ICmpIdentity.IID);
 	if cmpIdentity:
 		cmpIdentity.SetControllable(true);
 	self.unpayed = false;

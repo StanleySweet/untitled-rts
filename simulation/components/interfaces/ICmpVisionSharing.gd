@@ -4,4 +4,4 @@
 
 extends IComponent
 class_name ICmpVisionSharing
-static var IID_VisionSharing = PyrogenesisEngine.register_interface(ICmpVisionSharing)
+static var IID = PyrogenesisEngine.register_interface(ICmpVisionSharing)

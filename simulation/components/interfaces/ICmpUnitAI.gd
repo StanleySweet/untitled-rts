@@ -4,4 +4,17 @@
 
 extends IComponent
 class_name ICmpUnitAI
-static var IID_UnitAI = PyrogenesisEngine.register_interface(ICmpUnitAI)
+static var IID = PyrogenesisEngine.register_interface(ICmpUnitAI)
+
+func replace_order(order, new_order):
+    push_error("Not implemented")
+
+func garrison(holderId, _b, _c):
+    push_error("Not implemented")
+
+func back_to_work():
+    push_error("Not implemented")
+
+func has_work_orders() -> bool:
+    push_error("Not implemented")
+    return false

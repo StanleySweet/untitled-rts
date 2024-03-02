@@ -8,7 +8,7 @@ class_name CmpdentityMirage
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# Mirages don't get identity classes via the template-filter, so that code can query
-	# identity components via Engine.QueryInterface without having to explicitly check for mirages.
+	# identity components via Engine.query_interface without having to explicitly check for mirages.
 	# This is cloned as otherwise we get a reference to Identity's property,
 	# and that array is deleted when serializing (as it's not seralized), which ends in OOS.
 	pass;

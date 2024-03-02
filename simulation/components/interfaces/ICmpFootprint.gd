@@ -4,4 +4,4 @@
 
 extends IComponent
 class_name ICmpFootprint
-static var IID_Footprint = PyrogenesisEngine.register_interface(ICmpFootprint)
+static var IID = PyrogenesisEngine.register_interface(ICmpFootprint)

@@ -4,4 +4,4 @@
 
 extends IComponent
 class_name ICmpTurretHolder
-static var IID_TurretHolder = PyrogenesisEngine.register_interface(ICmpTurretHolder)
+static var IID = PyrogenesisEngine.register_interface(ICmpTurretHolder)

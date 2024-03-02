@@ -4,4 +4,12 @@
 
 extends IComponent
 class_name ICmpIdentity
-static var IID_Identity = PyrogenesisEngine.register_interface(ICmpIdentity)
+static var IID = PyrogenesisEngine.register_interface(ICmpIdentity)
+
+func set_controllable(_controllable : bool) -> void:
+	push_error("Not implemented")
+
+func get_classes_list() -> PackedStringArray:
+	push_error("Not implemented")
+	return []
+

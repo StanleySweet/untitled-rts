@@ -4,4 +4,4 @@
 
 extends IComponent
 class_name ICmpRallyPoint
-static var IID_RallyPoint = PyrogenesisEngine.register_interface(ICmpRallyPoint)
+static var IID = PyrogenesisEngine.register_interface(ICmpRallyPoint)

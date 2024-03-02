@@ -4,5 +4,5 @@
 
 extends IComponent
 class_name ICmpTurretable
-static var IID_Turretable = PyrogenesisEngine.register_interface(ICmpTurretable)
-static var MT_TurretedStateChanged = PyrogenesisEngine.register_interface("TurretedStateChanged")
+static var IID = PyrogenesisEngine.register_interface(ICmpTurretable)
+signal turreted_state_changed

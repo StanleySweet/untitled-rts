@@ -4,4 +4,4 @@
 
 extends IComponent
 class_name ICmpUpkeep
-static var IID_Upkeep = PyrogenesisEngine.register_interface(ICmpUpkeep)
+static var IID = PyrogenesisEngine.register_interface(ICmpUpkeep)

@@ -3,7 +3,7 @@ class_name CommandsHelper
 ## Incur the player with the cost of a bribe, optionally multiply the cost with
 ## the additionalMultiplier
 static func incur_bribe_cost(template, player: int, playerBribed: int, failedBribe : bool):
-	var cmpPlayerBribed = PlayerHelper.QueryPlayerIDInterface(playerBribed);
+	var cmpPlayerBribed = PlayerHelper.query_player_id_interface(playerBribed);
 	if !cmpPlayerBribed:
 		return false;
 
@@ -16,5 +16,5 @@ static func incur_bribe_cost(template, player: int, playerBribed: int, failedBri
 	#for var res in template.Cost.Resources:
 		#costs[res] = Math.floor(multiplier * ApplyValueModificationsToTemplate("Cost/Resources/" + res, +template.Cost.Resources[res], player, template));
 #
-	#var cmpPlayer = QueryPlayerIDInterface(player);
+	#var cmpPlayer = query_player_id_interface(player);
 	#return cmpPlayer && cmpPlayer.TrySubtractResources(costs);

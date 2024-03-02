@@ -3,5 +3,6 @@
 # SPDX-FileCopyrightText: © 2024 Stanislas Daniel Claude Dolcini
 
 extends IComponent
-class_name ICmpRangeManager
-static var IID_RangeManager = PyrogenesisEngine.register_interface(ICmpRangeManager)
+class_name ICmpAlertRaiser
+static var IID = PyrogenesisEngine.register_interface(ICmpAlertRaiser)
+

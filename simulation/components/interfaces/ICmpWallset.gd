@@ -4,4 +4,4 @@
 
 extends IComponent
 class_name ICmpWallset
-static var IID_Wallset = PyrogenesisEngine.register_interface(ICmpWallset)
+static var IID = PyrogenesisEngine.register_interface(ICmpWallset)

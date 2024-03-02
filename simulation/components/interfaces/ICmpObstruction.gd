@@ -4,4 +4,7 @@
 
 extends IComponent
 class_name ICmpObstruction
-static var IID_Obstruction = PyrogenesisEngine.register_interface(ICmpObstruction)
+static var IID = PyrogenesisEngine.register_interface(ICmpObstruction)
+
+func set_active(enabled : bool) -> void:
+	push_error("Not implemented")

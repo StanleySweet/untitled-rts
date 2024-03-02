@@ -4,4 +4,4 @@
 
 extends IComponent
 class_name ICmpPosition
-static var IID_Position = PyrogenesisEngine.register_interface(ICmpPosition)
+static var IID = PyrogenesisEngine.register_interface(ICmpPosition)

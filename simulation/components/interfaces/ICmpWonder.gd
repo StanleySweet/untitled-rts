@@ -4,4 +4,4 @@
 
 extends IComponent
 class_name ICmpWonder
-static var IID_Wonder = PyrogenesisEngine.register_interface(ICmpWonder)
+static var IID = PyrogenesisEngine.register_interface(ICmpWonder)

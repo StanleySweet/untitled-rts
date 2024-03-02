@@ -1,43 +1,125 @@
-[gd_scene load_steps=11 format=3 uid="uid://b2yiti2kvfchq"]
+[gd_scene load_steps=26 format=3 uid="uid://b2yiti2kvfchq"]
 
 [ext_resource type="Script" path="res://simulation/components/CmpFootprint.gd" id="1_jfpwj"]
+[ext_resource type="Script" path="res://simulation/components/schemas/CmpHealthSchema.gd" id="2_jfu5a"]
 [ext_resource type="Script" path="res://simulation/components/CmpHealth.gd" id="3_nmob2"]
-[ext_resource type="Script" path="res://simulation/components/models/DamageVariant.gd" id="3_rf71u"]
+[ext_resource type="Script" path="res://simulation/components/schemas/CmpIdentitySchema.gd" id="4_m05ny"]
 [ext_resource type="Script" path="res://simulation/components/CmpIdentity.gd" id="4_qx4ua"]
 [ext_resource type="Script" path="res://simulation/components/CmpWallset.gd" id="5_prnpu"]
-[ext_resource type="Texture2D" uid="uid://dx3q3rjx725a4" path="res://art/textures/ui/session/portraits/units/infantry_spearman.png" id="5_tk2gx"]
+[ext_resource type="Script" path="res://simulation/components/schemas/CmpWallsetSchema.gd" id="6_0ha61"]
 [ext_resource type="Script" path="res://simulation/components/CmpUpkeep.gd" id="7_f3dgg"]
 [ext_resource type="Script" path="res://simulation/components/models/PyrogenesisResources.gd" id="8_orare"]
+[ext_resource type="Script" path="res://simulation/components/CmpVisualActor.gd" id="9_lxjpb"]
+[ext_resource type="Script" path="res://simulation/components/CmpAttack.gd" id="10_ostsv"]
+[ext_resource type="Script" path="res://simulation/components/models/AttackType.gd" id="12_b7n48"]
+[ext_resource type="Script" path="res://simulation/components/schemas/CmpAttackSchema.gd" id="12_u6wwx"]
+[ext_resource type="Script" path="res://simulation/components/schemas/CmpFootPrintSchema.gd" id="13_31277"]
+[ext_resource type="Script" path="res://simulation/components/CmpTurretable.gd" id="14_3gqdb"]
+[ext_resource type="Script" path="res://simulation/components/CmpAttackDetection.gd" id="15_vy6dp"]
+[ext_resource type="Script" path="res://simulation/components/schemas/CmpAttackDetectionSchema.gd" id="16_7vxtq"]
 
-[sub_resource type="Resource" id="Resource_cibey"]
-script = ExtResource("3_rf71u")
-variant_name = ""
-ratio = 0.0
+[sub_resource type="Resource" id="Resource_wnuqu"]
+script = ExtResource("2_jfu5a")
+Max = 200.0
+Initial = -1.0
+DamageVariants = Array[Resource("res://simulation/components/models/DamageVariant.gd")]([])
+RegenRate = 0.0
+IdleRegenRate = 0.0
+DeathType = 0
+SpawnEntityOnDeath = ""
+Unhealable = false
+
+[sub_resource type="Resource" id="Resource_k8reu"]
+script = ExtResource("4_m05ny")
+civ = "Civ Key"
+generic_name = "Generic Name"
+specific_name = "Specific Name"
+rank = 0
+history = ""
+phenotypes = PackedStringArray()
+selection_group_name = ""
+tooltip = ""
+lang = ""
+classes = PackedStringArray()
+visible_classes = PackedStringArray()
+requirements = null
+is_undeletable = false
+is_controllable = false
+
+[sub_resource type="Resource" id="Resource_gk568"]
+script = ExtResource("6_0ha61")
+MinTowerOverlap = 0.0
+MaxTowerOverlap = 0.0
 
 [sub_resource type="Resource" id="Resource_xcmk6"]
 script = ExtResource("8_orare")
-food = null
 metal = null
 stone = null
+food = null
 wood = null
+
+[sub_resource type="Resource" id="Resource_pm6o3"]
+script = ExtResource("12_b7n48")
+Type = 0
+AttackName = ""
+MaxRange = 0.0
+MinRange = 0.0
+Origin = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+PrepareTime = 0
+EffectDelay = 0.0
+PreferredClasses = PackedStringArray()
+RestrictedClasses = PackedStringArray()
+
+[sub_resource type="Resource" id="Resource_6dbmk"]
+script = ExtResource("12_u6wwx")
+Attacks = Array[ExtResource("12_b7n48")]([SubResource("Resource_pm6o3")])
+
+[sub_resource type="Resource" id="Resource_gvxby"]
+script = ExtResource("13_31277")
+shapetype = 0
+WidthRadius = 1.0
+DepthRadius = 1.0
+Height = 4.0
+MaxSpawnDistance = 7.0
+
+[sub_resource type="Resource" id="Resource_bc2fg"]
+script = ExtResource("16_7vxtq")
+SuppressionTransferRange = 0.0
+SuppressionRange = 0.0
+SuppressionTime = 0
 
 [node name="InfantrySpearmanA" type="Node3D"]
 
-[node name="CmpFootprint" type="Node" parent="."]
-script = ExtResource("1_jfpwj")
-
 [node name="CmpHealth" type="Node" parent="."]
 script = ExtResource("3_nmob2")
-Max = 100.0
-DamageVariants = Array[ExtResource("3_rf71u")]([SubResource("Resource_cibey")])
+template = SubResource("Resource_wnuqu")
 
 [node name="CmpIdentity" type="Node" parent="."]
 script = ExtResource("4_qx4ua")
-icon = ExtResource("5_tk2gx")
+template = SubResource("Resource_k8reu")
 
 [node name="CmpWallSet" type="Node" parent="."]
 script = ExtResource("5_prnpu")
+template = SubResource("Resource_gk568")
 
 [node name="CmpUpkeep" type="Node" parent="."]
 script = ExtResource("7_f3dgg")
 Rates = SubResource("Resource_xcmk6")
+
+[node name="CmpVisualActor" type="Node" parent="."]
+script = ExtResource("9_lxjpb")
+
+[node name="CmpAttack" type="Node" parent="."]
+script = ExtResource("10_ostsv")
+template = SubResource("Resource_6dbmk")
+
+[node name="CmpFootprint" type="Node" parent="."]
+script = ExtResource("1_jfpwj")
+template = SubResource("Resource_gvxby")
+
+[node name="CmpTurretable" type="Node" parent="."]
+script = ExtResource("14_3gqdb")
+
+[node name="CmpAttackDetection" type="Node" parent="."]
+script = ExtResource("15_vy6dp")
+template = SubResource("Resource_bc2fg")

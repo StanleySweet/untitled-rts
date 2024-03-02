@@ -1,20 +1,45 @@
-[gd_scene load_steps=5 format=3 uid="uid://dupp1ojxlecob"]
+[gd_scene load_steps=7 format=3 uid="uid://dupp1ojxlecob"]
 
 [ext_resource type="PackedScene" uid="uid://b2yiti2kvfchq" path="res://templates/units/infantry_spearman_a.tscn" id="1_gqc11"]
 [ext_resource type="Script" path="res://scripts/Interactor.gd" id="2_ephyl"]
 [ext_resource type="FontFile" uid="uid://bme3562538vu7" path="res://fonts/Linux-Biolinum/LinBiolinum_R.ttf" id="3_ovuxi"]
+[ext_resource type="Script" path="res://view.gd" id="3_puf47"]
 [ext_resource type="PackedScene" uid="uid://o566ijeehtmu" path="res://maps/skirmishes/acropolis_bay_2p.tscn" id="4_batb2"]
+
+[sub_resource type="Environment" id="Environment_sba26"]
+background_mode = 1
+background_color = Color(0.47451, 0.47451, 0.47451, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.588235, 0.588235, 0.588235, 1)
+ambient_light_energy = 0.75
+tonemap_mode = 2
+ssao_enabled = true
+ssao_radius = 0.25
+ssao_intensity = 0.5
+ssao_power = 100.0
+ssao_horizon = 0.1
 
 [node name="TestMap" type="Node3D"]
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.70096, 1.22308)
+[node name="InfantrySpearmanA" parent="." instance=ExtResource("1_gqc11")]
+transform = Transform3D(0.695449, 0, -0.718576, 0, 1, 0, 0.718576, 0, 0.695449, 1.14797, 1.7123, 2.23645)
 
-[node name="RayCast3D" type="RayCast3D" parent="Camera3D"]
+[node name="Terrain_Container" parent="." instance=ExtResource("4_batb2")]
+
+[node name="View" type="Node3D" parent="."]
+transform = Transform3D(-0.390763, 0, -0.920491, 0, 1, 0, 0.920491, 0, -0.390763, 2.5618, 3.75241, 0)
+script = ExtResource("3_puf47")
+
+[node name="Camera" type="Camera3D" parent="View"]
+transform = Transform3D(0.707107, -0.40558, 0.579228, 2.85709e-16, 0.819152, 0.573577, -0.707107, -0.40558, 0.579228, 7.487, 2.744, -4.787)
+environment = SubResource("Environment_sba26")
+fov = 20.0
+
+[node name="RayCast3D" type="RayCast3D" parent="View/Camera"]
 target_position = Vector3(0, 0, -2)
 script = ExtResource("2_ephyl")
 
-[node name="GenericName" type="Label" parent="Camera3D/RayCast3D"]
+[node name="GenericName" type="Label" parent="View/Camera/RayCast3D"]
 offset_left = 56.0
 offset_top = 258.0
 offset_right = 151.0
@@ -22,7 +47,7 @@ offset_bottom = 299.0
 theme_override_fonts/font = ExtResource("3_ovuxi")
 text = "Generic Name"
 
-[node name="SpecificName" type="Label" parent="Camera3D/RayCast3D"]
+[node name="SpecificName" type="Label" parent="View/Camera/RayCast3D"]
 offset_left = 56.0
 offset_top = 273.0
 offset_right = 151.0
@@ -30,11 +55,6 @@ offset_bottom = 314.0
 theme_override_fonts/font = ExtResource("3_ovuxi")
 text = "Specific Name"
 
-[node name="Icon" type="TextureRect" parent="Camera3D/RayCast3D"]
+[node name="Icon" type="TextureRect" parent="View/Camera/RayCast3D"]
 offset_right = 256.0
 offset_bottom = 256.0
-
-[node name="InfantrySpearmanA" parent="." instance=ExtResource("1_gqc11")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.70096, 0)
-
-[node name="Terrain_Container" parent="." instance=ExtResource("4_batb2")]

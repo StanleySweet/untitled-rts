@@ -4,4 +4,4 @@
 
 extends Node
 class_name IComponent
-@export var entity : int
+var entity : int

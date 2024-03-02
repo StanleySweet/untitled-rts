@@ -23,7 +23,7 @@ static func add_entity(template : CmpTemplate):
 	entities[entity_count] = template
 	return entity_count;
 
-static func QueryInterface(entity_id, iid):
+static func query_interface(entity_id, iid):
 	var template : CmpTemplate = entities[entity_id]
 	return template.get_component(components[iid])
 

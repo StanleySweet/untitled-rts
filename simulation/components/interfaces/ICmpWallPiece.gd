@@ -4,4 +4,4 @@
 
 extends IComponent
 class_name ICmpWallPiece
-static var IID_WallPiece = PyrogenesisEngine.register_interface(ICmpWallPiece)
+static var IID = PyrogenesisEngine.register_interface(ICmpWallPiece)

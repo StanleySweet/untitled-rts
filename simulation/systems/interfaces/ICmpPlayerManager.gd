@@ -4,4 +4,4 @@
 
 extends IComponent
 class_name ICmpPlayerManager
-static var IID_PlayerManager = PyrogenesisEngine.register_interface(ICmpPlayerManager)
+static var IID = PyrogenesisEngine.register_interface(ICmpPlayerManager)

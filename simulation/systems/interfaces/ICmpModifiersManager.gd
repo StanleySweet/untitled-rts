@@ -4,4 +4,4 @@
 
 extends IComponent
 class_name ICmpModifiersManager
-static var IID_ModifiersManager = PyrogenesisEngine.register_interface(ICmpModifiersManager)
+static var IID = PyrogenesisEngine.register_interface(ICmpModifiersManager)

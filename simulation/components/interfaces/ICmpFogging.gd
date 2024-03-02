@@ -4,4 +4,7 @@
 
 extends IComponent
 class_name ICmpFogging
-static var IID_Fogging = PyrogenesisEngine.register_interface(ICmpFogging)
+static var IID = PyrogenesisEngine.register_interface(ICmpFogging)
+
+func activate():
+	push_error("Not implemented")

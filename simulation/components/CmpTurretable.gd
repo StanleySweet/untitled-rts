@@ -5,13 +5,6 @@
 extends ICmpTurretable
 class_name CmpTurretable
 
-var IID_TurretHolder = ICmpTurretHolder.IID_TurretHolder
-var IID_Obstruction = ICmpObstruction.IID_Obstruction
-var IID_UnitMotion = ICmpUnitMotion.IID_UnitMotion
-var IID_UnitAI = ICmpUnitAI.IID_UnitAI
-var IID_Position = ICmpPosition.IID_Position
-var IID_RallyPoint = ICmpRallyPoint.IID_RallyPoint
-
 @export var holder: int
 @export var is_ejectable: bool
 
@@ -21,8 +14,8 @@ func _ready():
 	self.is_ejectable = false
 	
 func get_range(_type, target : int):
-	var cmpTurretHolder = PyrogenesisEngine.QueryInterface(target, IID_TurretHolder)
-	return cmpTurretHolder.LoadingRange() if cmpTurretHolder else { "min": 0, "max": 1 };
+	var cmpTurretHolder : ICmpTurretHolder = PyrogenesisEngine.query_interface(target, ICmpTurretHolder.IID)
+	return cmpTurretHolder.loading_range() if cmpTurretHolder else { "min": 0, "max": 1 };
 
 func is_turreted() -> bool:
 	return self.holder != PyrogenesisEngine.INVALID_ENTITY
@@ -31,37 +24,37 @@ func can_occupy(target : int) -> bool:
 	if self.holder != PyrogenesisEngine.INVALID_ENTITY:
 		return false
 	
-	var cmpTurretHolder = PyrogenesisEngine.QueryInterface(target, IID_TurretHolder);
-	return cmpTurretHolder && cmpTurretHolder.CanOccupy(self.entity);
+	var cmpTurretHolder : ICmpTurretHolder = PyrogenesisEngine.query_interface(target, ICmpTurretHolder.IID)
+	return cmpTurretHolder && cmpTurretHolder.can_occupy(self.entity);
 
 func occupy_turret(target : int, turretPointName : String, ejectable = true):
 	if !self.can_occupy(target):
 		return false
 		
-	var cmpTurretHolder = PyrogenesisEngine.QueryInterface(target, IID_TurretHolder);
+	var cmpTurretHolder : ICmpTurretHolder = PyrogenesisEngine.query_interface(target, ICmpTurretHolder.IID)
 	if !cmpTurretHolder || !cmpTurretHolder.occupy_named_turretPoint(self.entity, turretPointName):
 		return
 
 	self.holder = target;
 	self.is_ejectable = ejectable;
 
-	var cmpUnitAI = PyrogenesisEngine.QueryInterface(self.entity, IID_UnitAI)
+	var cmpUnitAI : ICmpUnitAI = PyrogenesisEngine.query_interface(self.entity, ICmpUnitAI.IID)
 	if cmpUnitAI:
 		cmpUnitAI.set_turret_stance();
 
-	var cmpUnitMotion = PyrogenesisEngine.QueryInterface(self.entity, IID_UnitMotion)
+	var cmpUnitMotion : ICmpUnitMotion = PyrogenesisEngine.query_interface(self.entity, ICmpUnitMotion.IID)
 	if cmpUnitMotion:
 		cmpUnitMotion.set_face_point_after_move(false);
 
 	# Remove the unit's obstruction to avoid interfering with pathing.
-	var cmpObstruction = PyrogenesisEngine.QueryInterface(self.entity, IID_Obstruction)
+	var cmpObstruction : ICmpObstruction = PyrogenesisEngine.query_interface(self.entity, ICmpObstruction.IID)
 	if cmpObstruction:
-		cmpObstruction.SetActive(false);
+		cmpObstruction.set_active(false);
 
-	PyrogenesisEngine.post_message(self.entity, MT_TurretedStateChanged, {
+	self.turreted_state_changed.emit(self.entity, {
 		"oldHolder": PyrogenesisEngine.INVALID_ENTITY,
 		"holderID": target
-	});
+	})
 
 	return true;
 
@@ -76,40 +69,40 @@ func leave_turret(forced : bool = false):
 	if (!pos):
 		return false;
 
-	var cmpTurretHolder = PyrogenesisEngine.QueryInterface(self.holder, IID_TurretHolder);
+	var cmpTurretHolder = PyrogenesisEngine.query_interface(self.holder, IID);
 	if (!cmpTurretHolder || !cmpTurretHolder.LeaveTurretPoint(self.entity, forced)):
 		return false;
 
-	var cmpUnitMotionEntity = PyrogenesisEngine.QueryInterface(self.entity, IID_UnitMotion);
+	var cmpUnitMotionEntity = PyrogenesisEngine.query_interface(self.entity, IID);
 	if (cmpUnitMotionEntity):
 		cmpUnitMotionEntity.SetFacePointAfterMove(true);
 
-	var cmpPosition = PyrogenesisEngine.QueryInterface(self.entity, IID_Position);
+	var cmpPosition = PyrogenesisEngine.query_interface(self.entity, IID);
 	if cmpPosition:
 		cmpPosition.SetTurretParent(PyrogenesisEngine.INVALID_ENTITY, Vector3())
 		cmpPosition.JumpTo(pos.x, pos.z);
 		cmpPosition.SetHeightOffset(0);
 
-		var cmpHolderPosition = PyrogenesisEngine.QueryInterface(self.holder, IID_Position);
+		var cmpHolderPosition = PyrogenesisEngine.query_interface(self.holder, IID);
 		if cmpHolderPosition:
 			cmpPosition.SetYRotation(cmpHolderPosition.GetPosition().horizAngleTo(pos));
 
-	var cmpUnitAI = PyrogenesisEngine.QueryInterface(self.entity, IID_UnitAI);
+	var cmpUnitAI = PyrogenesisEngine.query_interface(self.entity, IID);
 	if (cmpUnitAI):
 		cmpUnitAI.Ungarrison();
 		cmpUnitAI.ResetTurretStance();
 
 	# Reset the obstruction flags to template defaults.
-	var cmpObstruction = PyrogenesisEngine.QueryInterface(self.entity, IID_Obstruction);
+	var cmpObstruction = PyrogenesisEngine.query_interface(self.entity, IID);
 	if cmpObstruction:
 		cmpObstruction.SetActive(true);
 
-	PyrogenesisEngine.post_message(self.entity, MT_TurretedStateChanged, {
+	self.turreted_state_changed.emit(self.entity, {
 		"oldHolder": self.holder,
 		"holderID": PyrogenesisEngine.INVALID_ENTITY
 	});
 
-	var cmpRallyPoint = PyrogenesisEngine.QueryInterface(self.holder, IID_RallyPoint);
+	var cmpRallyPoint = PyrogenesisEngine.query_interface(self.holder, IID);
 
 	# Need to delete this before ordering to a rally
 	# point else we may not occupy another turret point.
@@ -126,14 +119,14 @@ func on_entity_renamed(msg) -> void:
 	if self.holder == PyrogenesisEngine.INVALID_ENTITY:
 		return
 
-	var cmpTurretHolder = PyrogenesisEngine.QueryInterface(self.holder, IID_TurretHolder);
+	var cmpTurretHolder : ICmpTurretHolder = PyrogenesisEngine.query_interface(self.holder, ICmpTurretHolder.IID);
 	if !cmpTurretHolder:
 		return;
 
 	var previous_holder = self.holder
 	var currentPoint = cmpTurretHolder.GetOccupiedTurretPointName(self.entity);
 	self.leave_turret(true);
-	var cmpTurretableNew = PyrogenesisEngine.QueryInterface(msg.newentity, IID_Turretable);
+	var cmpTurretableNew : ICmpTurretable = PyrogenesisEngine.query_interface(msg.newentity, ICmpTurretable.IID);
 	if cmpTurretableNew:
 		cmpTurretableNew.OccupyTurret(previous_holder, currentPoint);
 

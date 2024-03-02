@@ -3,3 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://d0r1g3nhe8oe0" path="res://import/acropolis_bay_2p.pmp" id="1_liuc4"]
 
 [node name="Terrain_Container" instance=ExtResource("1_liuc4")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." index="2"]
+transform = Transform3D(-1058.84, 1941.07, -2313.24, 807.877, 2544.06, 1764.96, 2909.67, 0.00015448, -1331.84, 0, 0, 0)
+shadow_enabled = true
+shadow_opacity = 0.75

@@ -4,4 +4,8 @@
 
 extends IComponent
 class_name ICmpOwnership
-static var IID_Ownership = PyrogenesisEngine.register_interface(ICmpOwnership)
+static var IID = PyrogenesisEngine.register_interface(ICmpOwnership)
+
+func get_owner_id() -> int:
+	push_error("Not implemented")
+	return PlayerHelper.INVALID_PLAYER

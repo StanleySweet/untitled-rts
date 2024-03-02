@@ -4,4 +4,4 @@
 
 extends IComponent
 class_name ICmpUnitMotion
-static var IID_UnitMotion = PyrogenesisEngine.register_interface(ICmpUnitMotion)
+static var IID = PyrogenesisEngine.register_interface(ICmpUnitMotion)

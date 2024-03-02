@@ -4,4 +4,4 @@
 
 extends IComponent
 class_name ICmpHealth
-static var IID_Health = PyrogenesisEngine.register_interface(ICmpHealth)
+static var IID = PyrogenesisEngine.register_interface(ICmpHealth)
